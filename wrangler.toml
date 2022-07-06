@@ -1,4 +1,5 @@
 name = "qr-code-generator"
+account_id = "3ced467e696ea0914b9dd1b57bf4f156"
 main = "src/index.js"
 compatibility_date = "2022-07-06"
 type = "webpack"
