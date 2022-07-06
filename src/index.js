@@ -8,10 +8,15 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+async function generate(request) {
+	return new Response("Hello World!");
+}
+
 export default {
+
 	async fetch(request) {
 		if (request.method === "POST") {
-			return new Response("Hello World!");
+			return generate(request);
 		}
 		return new Response("Expected POST", { status: 405 });
 	},
