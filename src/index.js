@@ -8,8 +8,13 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+const qr = require('qr-image');
+
 async function generate(request) {
-	return new Response("Hello World!");
+	const { text} = await request.json();
+	const headers = {"Content-Type":"image/png"};
+	const qr_png = qr.imageSync(text || "https://github.com/eniolajayi");
+	return new Response(qr_png,{headers});
 }
 
 export default {
