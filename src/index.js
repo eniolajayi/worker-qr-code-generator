@@ -10,6 +10,9 @@
 
 export default {
 	async fetch(request) {
-		return new Response("Hello World!");
+		if (request.method === "POST") {
+			return new Response("Hello World!");
+		}
+		return new Response("Expected POST", { status: 405 });
 	},
 };
