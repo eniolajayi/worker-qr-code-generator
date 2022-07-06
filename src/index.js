@@ -8,13 +8,14 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-const qr = require('qr-image');
+import html from "./index.html";
+import qr from "qr-image";
 
 async function generate(request) {
-	const { text} = await request.json();
-	const headers = {"Content-Type":"image/png"};
+	const { text } = await request.json();
+	const headers = { "Content-Type": "image/png" };
 	const qr_png = qr.imageSync(text || "https://github.com/eniolajayi");
-	return new Response(qr_png,{headers});
+	return new Response(qr_png, { headers });
 }
 
 export default {
@@ -23,6 +24,10 @@ export default {
 		if (request.method === "POST") {
 			return generate(request);
 		}
-		return new Response("Expected POST", { status: 405 });
+		return new Response(html, {
+			headers: {
+				"Content-Type": "text/html"
+			}
+		});
 	},
 };
