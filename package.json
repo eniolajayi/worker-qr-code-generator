@@ -1,6 +1,6 @@
 {
-  "name": "qr-code-generator",
-  "version": "0.0.0",
+  "name": "worker-qr-code-generator",
+  "version": "1.0.0",
   "devDependencies": {
     "wrangler": "2.0.16"
   },
