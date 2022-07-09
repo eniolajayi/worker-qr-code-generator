@@ -13,7 +13,7 @@ import qr from "qr-image";
 
 async function generate(request) {
 	const { text } = await request.json();
-	const headers = { "Content-Type": "image/png" };
+	const headers = { "Content-Type": "image/png", "Access-Control-Allow-Origin":"*" };
 	const qr_png = qr.imageSync(text || "https://github.com/eniolajayi");
 	return new Response(qr_png, { headers });
 }
